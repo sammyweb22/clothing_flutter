@@ -1,3 +1,5 @@
+import 'package:clothing_flutter/payment_screen.dart';
+import 'package:clothing_flutter/receipt_screen.dart';
 import 'package:clothing_flutter/wallet_screen.dart';
 import 'package:flutter/material.dart';
 import 'get_started.dart';
@@ -20,7 +22,9 @@ class MyApp extends StatelessWidget {
         '/': (context) => const GetStartedScreen(),
         //'/home': (context) => const HomeScreen(),
         //'/': (context) => const WalletScreen(),
-        '/': (context) => const AddCardScreen(),
+        //'/': (context) => const AddCardScreen(),
+        //'/': (context) => const PaymentScreen(),
+        '/': (context) => const ReceiptScreen(),
       },
     );
   }

@@ -54,11 +54,18 @@ class WalletScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // VISA Card
-                Image.asset("assets/images/visa.png", width: double.infinity),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: Image.asset(
+                    "assets/images/visa.png",
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
 
                 const SizedBox(height: 12),
 
-                // Page Indicator
+                // Page Indicator/3 dots
                 Center(
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -83,9 +90,13 @@ class WalletScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Popular Card
-                Image.asset(
-                  "assets/images/popular.png",
-                  width: double.infinity,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: Image.asset(
+                    "assets/images/popular.png",
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                 ),
 
                 const SizedBox(height: 30),
