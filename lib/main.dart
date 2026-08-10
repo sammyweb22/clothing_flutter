@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const GetStartedScreen(),
-        //'/home': (context) => const HomeScreen(),
-        //'/': (context) => const WalletScreen(),
-        //'/': (context) => const AddCardScreen(),
-        //'/': (context) => const PaymentScreen(),
-        '/': (context) => const ReceiptScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/wallet': (context) => const WalletScreen(),
+        '/add-card': (context) => const AddCardScreen(),
+        '/payment': (context) => const PaymentScreen(),
+        '/receipt': (context) => const ReceiptScreen(),
       },
     );
   }

@@ -1,3 +1,4 @@
+import 'package:clothing_flutter/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,42 +56,11 @@ class GetStartedScreen extends StatelessWidget {
                     ),
                     Spacer(),
                     // TextButton(onPressed: () => {}, child: Text('Get Started')),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xFF12B0F8), // Top color
-                            Color(0xFF007AFF), // Bottom color
-                          ],
-                        ),
-                      ),
-                      child: TextButton(
-                        onPressed: () {
-                          // Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
-                          Navigator.pushReplacementNamed(context, '/home');
-                        },
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 30,
-                            vertical: 15,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          foregroundColor: Colors.white, // Text color
-                        ),
-                        child: const Text(
-                          'Get Started',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                    CustomButton(
+                      title: "Get started",
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/home');
+                      },
                     ),
                     const Gap(30),
                   ],

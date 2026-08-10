@@ -1,3 +1,5 @@
+import 'package:clothing_flutter/payment_screen.dart';
+import 'package:clothing_flutter/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -42,226 +44,205 @@ class AddCardScreen extends StatelessWidget {
         ],
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
 
-            /// Card Image
-            ClipRRect(
-              borderRadius: BorderRadius.circular(24),
-              child: Image.asset(
-                "assets/images/newcard.png",
-                width: double.infinity,
-                height: 220,
-                fit: BoxFit.fitWidth,
-                alignment: Alignment.topCenter,
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            /// Card Holder Name
-            const Text(
-              "Card holder's name",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-            ),
-
-            const SizedBox(height: 20),
-
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Dwayne Johnson",
-                filled: true,
-                fillColor: const Color(0xFFF7F7FA),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 18,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
-                  borderSide: BorderSide.none,
+              /// Card Image
+              ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Image.asset(
+                  "assets/images/newcard.png",
+                  width: double.infinity,
+                  height: 220,
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.topCenter,
                 ),
               ),
-            ),
 
-            const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-            /// Card Number
-            const Text(
-              "Card number",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-            ),
+              /// Card Holder Name
+              const Text(
+                "Card holder's name",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
 
-            const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-            TextField(
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                hintText: "4225 9765 0008 6141",
-                filled: true,
-                fillColor: const Color(0xFFF7F7FA),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 18,
-                ),
-
-                suffixIcon: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: SvgPicture.asset(
-                    "assets/icons/card.svg",
-                    width: 30,
-                    height: 30,
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Dwayne Johnson",
+                  filled: true,
+                  fillColor: const Color(0xFFF7F7FA),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 18,
                   ),
-                ),
-
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
-                  borderSide: BorderSide.none,
-                ),
-
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
-                  borderSide: const BorderSide(
-                    color: Color(0xFF2196F3),
-                    width: 1.2,
-                  ),
-                ),
-
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18),
-                  borderSide: const BorderSide(
-                    color: Color(0xFF2196F3),
-                    width: 2,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide.none,
                   ),
                 ),
               ),
-            ),
 
-            const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-            /// Expiry Date + CVV
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Expiry Date",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+              /// Card Number
+              const Text(
+                "Card number",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
 
-                      const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: "09 / 24",
-                          filled: true,
-                          fillColor: const Color(0xFFF7F7FA),
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 18,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18),
-                            borderSide: BorderSide.none,
+              TextField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  hintText: "4225 9765 0008 6141",
+                  filled: true,
+                  fillColor: const Color(0xFFF7F7FA),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 18,
+                  ),
+
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: SvgPicture.asset(
+                      "assets/icons/card.svg",
+                      width: 30,
+                      height: 30,
+                    ),
+                  ),
+
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide.none,
+                  ),
+
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: const BorderSide(
+                      color: Color(0xFF2196F3),
+                      width: 1.2,
+                    ),
+                  ),
+
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: const BorderSide(
+                      color: Color(0xFF2196F3),
+                      width: 2,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              /// Expiry Date + CVV
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Expiry Date",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
 
-                const SizedBox(width: 20),
+                        const SizedBox(height: 20),
 
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "CVV",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      TextField(
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          hintText: "722",
-                          filled: true,
-                          fillColor: const Color(0xFFF7F7FA),
-
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 18,
-                          ),
-
-                          suffixIcon: const Icon(
-                            Icons.help_outline,
-                            color: Color(0xFF2196F3),
-                          ),
-
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18),
-                            borderSide: BorderSide.none,
+                        TextField(
+                          decoration: InputDecoration(
+                            hintText: "09 / 24",
+                            filled: true,
+                            fillColor: const Color(0xFFF7F7FA),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 18,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
 
-            const Spacer(),
+                  const SizedBox(width: 20),
 
-            /// Add Card Button
-            Container(
-              width: double.infinity,
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: const LinearGradient(
-                  colors: [Color(0xFF35B8FF), Color(0xFF007AFF)],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "CVV",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+
+                        const SizedBox(height: 20),
+
+                        TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            hintText: "722",
+                            filled: true,
+                            fillColor: const Color(0xFFF7F7FA),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 18,
+                            ),
+
+                            suffixIcon: const Icon(
+                              Icons.help_outline,
+                              color: Color(0xFF2196F3),
+                            ),
+
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              child: ElevatedButton(
-                onPressed: () {},
 
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.transparent,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
+              const SizedBox(height: 30),
 
-                child: const Text(
-                  "Add new card",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
-                ),
+              /// Add Card Button
+              CustomButton(
+                title: "Add new card",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PaymentScreen(),
+                    ),
+                  );
+                },
               ),
-            ),
 
-            const SizedBox(height: 25),
-          ],
+              const SizedBox(height: 25),
+            ],
+          ),
         ),
       ),
     );

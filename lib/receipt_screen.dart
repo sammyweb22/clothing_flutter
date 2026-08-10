@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'home_screen.dart';
+
 class ReceiptScreen extends StatelessWidget {
   const ReceiptScreen({super.key});
 
@@ -150,7 +152,15 @@ class ReceiptScreen extends StatelessWidget {
                     ),
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                        (route) => false,
+                      );
+                    },
 
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
