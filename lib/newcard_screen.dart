@@ -2,6 +2,32 @@ import 'package:clothing_flutter/payment_screen.dart';
 import 'package:clothing_flutter/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
+
+class ExpiryDateFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    String numbers = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
+
+    if (numbers.length > 4) {
+      numbers = numbers.substring(0, 4);
+    }
+
+    String formatted = numbers;
+
+    if (numbers.length > 2) {
+      formatted = '${numbers.substring(0, 2)} / ${numbers.substring(2)}';
+    }
+
+    return TextEditingValue(
+      text: formatted,
+      selection: TextSelection.collapsed(offset: formatted.length),
+    );
+  }
+}
 
 class AddCardScreen extends StatelessWidget {
   const AddCardScreen({super.key});
@@ -163,6 +189,8 @@ class AddCardScreen extends StatelessWidget {
                         const SizedBox(height: 20),
 
                         TextField(
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [ExpiryDateFormatter()],
                           decoration: InputDecoration(
                             hintText: "09 / 24",
                             filled: true,
@@ -199,20 +227,18 @@ class AddCardScreen extends StatelessWidget {
 
                         TextField(
                           keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                            LengthLimitingTextInputFormatter(3),
+                          ],
                           decoration: InputDecoration(
                             hintText: "722",
                             filled: true,
                             fillColor: const Color(0xFFF7F7FA),
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 18,
-                            ),
-
                             suffixIcon: const Icon(
                               Icons.help_outline,
                               color: Color(0xFF2196F3),
                             ),
-
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
                               borderSide: BorderSide.none,

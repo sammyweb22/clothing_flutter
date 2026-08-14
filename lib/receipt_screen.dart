@@ -1,10 +1,24 @@
+import 'package:clothing_flutter/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'home_screen.dart';
 
 class ReceiptScreen extends StatelessWidget {
   const ReceiptScreen({super.key});
+
+  Widget dottedLine() {
+    return SizedBox(
+      height: 2,
+      width: double.infinity,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: List.generate(
+          20,
+          (index) => Container(width: 10, height: 2, color: Colors.black),
+        ),
+      ),
+    );
+  }
 
   Widget receiptRow(String title, String amount, {bool total = false}) {
     return Padding(
@@ -107,17 +121,17 @@ class ReceiptScreen extends StatelessWidget {
 
                           const SizedBox(height: 25),
 
-                          const Divider(),
+                          dottedLine(),
 
                           receiptRow("Amount", "\$40.00"),
                           receiptRow("Service Fee", "\$2.82"),
                           receiptRow("Internet Charge", "\$7.18"),
 
-                          const Divider(),
+                          dottedLine(),
 
                           receiptRow("Total", "\$50.00", total: true),
 
-                          const Divider(),
+                          dottedLine(),
 
                           const Spacer(),
 
@@ -139,45 +153,14 @@ class ReceiptScreen extends StatelessWidget {
               const SizedBox(height: 25),
 
               /// Home Button
-              SizedBox(
-                width: double.infinity,
-                height: 60,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0xFF35B8FF), Color(0xFF007AFF)],
-                    ),
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
-                        ),
-                        (route) => false,
-                      );
-                    },
-
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                      elevation: 0,
-                    ),
-
-                    child: Text(
-                      "Home",
-                      style: GoogleFonts.inter(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+              CustomButton(
+                title: "Home",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
+                },
               ),
 
               const SizedBox(height: 20),

@@ -71,7 +71,7 @@ class WalletScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // VISA Card
-                const WalletCard(image: "assets/images/visa.png"),
+                const WalletCard(),
 
                 const SizedBox(height: 12),
 
@@ -81,7 +81,7 @@ class WalletScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Popular Card
-                const WalletCard(image: "assets/images/popular.png"),
+                Image.asset("assets/images/popular.png"),
 
                 const SizedBox(height: 30),
 

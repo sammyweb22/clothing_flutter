@@ -13,6 +13,7 @@ class HomeHeader extends StatelessWidget {
           'Hello, Maria',
           style: GoogleFonts.inter(
             fontSize: 17,
+            fontWeight: FontWeight.w400,
             color: const Color(0xFFC7C7CC),
           ),
         ),
@@ -26,7 +27,14 @@ class HomeHeader extends StatelessWidget {
                 fontSize: 34,
               ),
             ),
-            Image.asset('assets/images/user.png'),
+            SizedBox(
+              // width: 40,
+              // height: 40,
+              child: Image.asset(
+                'assets/images/user.png',
+                // fit: BoxFit.cover
+              ),
+            ),
           ],
         ),
       ],
