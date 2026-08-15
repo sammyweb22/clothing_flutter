@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TransactionTile extends StatelessWidget {
@@ -26,19 +27,26 @@ class TransactionTile extends StatelessWidget {
         leading: CircleAvatar(
           radius: 28,
           backgroundColor: Colors.grey.shade200,
-          backgroundImage: AssetImage(image),
+          child: Image.asset(image, width: 32),
         ),
         title: Text(
           title,
-          style: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w600),
+          style: GoogleFonts.inter(fontSize: 17, fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
           date,
-          style: GoogleFonts.inter(fontSize: 14, color: Colors.grey),
+          style: GoogleFonts.inter(fontSize: 15, color: Color(0XFF8E8E93)),
         ),
-        trailing: Text(
-          amount,
-          style: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w600),
+        trailing: Container(
+          padding: EdgeInsets.only(top: 7),
+          child: Column(
+            children: [
+              Text(
+                amount,
+                style: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
         ),
       ),
     );

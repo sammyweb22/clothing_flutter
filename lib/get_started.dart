@@ -46,18 +46,21 @@ class GetStartedScreen extends StatelessWidget {
                     const Gap(40),
                     Image.asset("assets/images/expenio.png"),
                     const Gap(40),
-                    Text(
-                      'Going cashless has never been this easier with the world’s most leading expense manager.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.inter(
-                        fontSize: 17,
-                        color: Color(0xFFAEAEB2),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Text(
+                        'Going cashless has never been this easier with the world’s most leading expense manager.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.inter(
+                          fontSize: 17,
+                          color: Color(0xFFAEAEB2),
+                        ),
                       ),
                     ),
                     Spacer(),
                     // TextButton(onPressed: () => {}, child: Text('Get Started')),
                     CustomButton(
-                      title: "Get started",
+                      title: "Get Started",
                       onPressed: () {
                         Navigator.pushReplacementNamed(context, '/home');
                       },

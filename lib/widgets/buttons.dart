@@ -12,9 +12,10 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       height: 60,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(14),
         gradient: const LinearGradient(
-          colors: [Color(0xFF35B8FF), Color(0xFF007AFF)],
+          colors: [Color(0xFF12B0F8), Color(0xFF007AFF)],
+          // colors: [Color(0xFF35B8FF), Color(0xFF007AFF)],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
@@ -26,14 +27,14 @@ class CustomButton extends StatelessWidget {
           shadowColor: Colors.transparent,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(14),
           ),
         ),
         child: Text(
           title,
           style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w500,
+            fontSize: 17,
+            fontWeight: FontWeight.w400,
             color: Colors.white,
           ),
         ),

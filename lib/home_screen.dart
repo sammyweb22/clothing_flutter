@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'widgets/home_header.dart';
 import 'widgets/transactions.dart';
@@ -6,8 +8,15 @@ import 'widgets/wallet_header.dart';
 import 'widgets/transaction_data.dart';
 import 'widgets/graph_painter.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool hiddenAmount = false;
 
   @override
   Widget build(BuildContext context) {
@@ -59,64 +68,67 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 10),
+
+              const Gap(10),
 
               // Header
-              const HomeHeader(),
+              homeHeader(),
 
-              const SizedBox(height: 20),
+              const Gap(20),
 
               // BALANCE
               Container(
-                height: 110,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 20,
+                ),
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
-                  color: Colors.blue,
+                  color: Color(0XFF007AFF).withOpacity(.6),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
 
-                      Text(
-                        "My Balance",
-                        style: GoogleFonts.inter(
-                          color: Colors.white,
-                          fontSize: 15,
-                        ),
-                      ),
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "\$25,520",
-                            style: GoogleFonts.inter(
-                              color: Colors.white,
-                              fontSize: 34,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-
-                          const Icon(
-                            Icons.arrow_forward_ios,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "My Balance",
+                          style: GoogleFonts.inter(
                             color: Colors.white,
-                            size: 25,
+                            fontSize: 15,
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+
+                        Text(
+                          hiddenAmount ? '*****' : "\$25,520",
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 34,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+
+
+                    InkWell(
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                          child: SvgPicture.asset('assets/icons/arrow.svg')),
+                      onTap: (){
+                        setState(() {
+                          hiddenAmount =! hiddenAmount;
+                        });
+                      },
+                    )
+                  ],
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const Gap(20),
 
               // EXPENSES
               Container(
@@ -180,7 +192,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const Gap(20),
               // WALLET HEADER
               WalletHeader(
                 onSeeAll: () {
@@ -188,15 +200,42 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 20),
               // TRANSACTIONS
               const TransactionList(transactions: transactions),
 
-              const SizedBox(height: 100),
+              const Gap(20),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget homeHeader(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Hello, Maria',
+          style: GoogleFonts.inter(
+            fontSize: 17,
+            color: const Color(0xFF8E8E93),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Home',
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w700,
+                fontSize: 34,
+              ),
+            ),
+            Image.asset('assets/images/user.png', height: 40),
+          ],
+        ),
+      ],
     );
   }
 }
