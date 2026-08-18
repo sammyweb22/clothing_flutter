@@ -3,6 +3,7 @@ import 'package:clothing_flutter/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 
 class ExpiryDateFormatter extends TextInputFormatter {
   @override
@@ -251,7 +252,7 @@ class AddCardScreen extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 30),
+              const Gap(80),
 
               /// Add Card Button
               CustomButton(
@@ -265,8 +266,6 @@ class AddCardScreen extends StatelessWidget {
                   );
                 },
               ),
-
-              const SizedBox(height: 25),
             ],
           ),
         ),

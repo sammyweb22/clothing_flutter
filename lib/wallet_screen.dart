@@ -81,7 +81,47 @@ class WalletScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Popular Card
-                Image.asset("assets/images/popular.png"),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        "assets/images/popular.png",
+                        width: double.infinity,
+                        height: 230,
+                        fit: BoxFit.cover,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "POPULAR",
+                              style: GoogleFonts.inter(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xffD57049),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 150),
+                              child: Text(
+                                "Get upto 15% cashback on clothings and apparels ",
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff6B3018),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
 
                 const SizedBox(height: 30),
 

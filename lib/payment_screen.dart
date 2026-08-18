@@ -1,6 +1,8 @@
 import 'package:clothing_flutter/receipt_screen.dart';
 import 'package:clothing_flutter/widgets/buttons.dart';
+import 'package:clothing_flutter/widgets/wallet_card.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PaymentScreen extends StatelessWidget {
@@ -98,14 +100,7 @@ class PaymentScreen extends StatelessWidget {
                 const SizedBox(height: 25),
 
                 // Card image
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(24),
-                  child: Image.asset(
-                    "assets/images/visa.png",
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                const WalletCard(),
 
                 // Page indicator
                 const SizedBox(height: 8),
@@ -131,7 +126,7 @@ class PaymentScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 30),
+                const Gap(80),
 
                 // Pay button
                 CustomButton(
@@ -146,7 +141,7 @@ class PaymentScreen extends StatelessWidget {
                   },
                 ),
 
-                const SizedBox(height: 25),
+                //const SizedBox(height: 80),
               ],
             ),
           ),

@@ -12,15 +12,17 @@ class GetStartedScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      // extendBody: true,
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Image
+              Container(
+                height: height * .55,
+                width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xFFAF52DE).withOpacity(.1),
-                  borderRadius: BorderRadius.only(
+                  color: const Color(0xFFAF52DE).withOpacity(.1),
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(50),
                   ),
                 ),
@@ -29,48 +31,55 @@ class GetStartedScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-            ),
-            Container(
-              height: height * .35,
-              color: Color(0xFFAF52DE).withOpacity(.1),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(50),
+
+              // Bottom section
+              Container(
+                width: double.infinity,
+                color: const Color(0xFFAF52DE).withOpacity(.1),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(50),
+                    ),
                   ),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    const Gap(40),
-                    Image.asset("assets/images/expenio.png"),
-                    const Gap(40),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Text(
-                        'Going cashless has never been this easier with the world’s most leading expense manager.',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.inter(
-                          fontSize: 17,
-                          color: Color(0xFFAEAEB2),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: [
+                      const Gap(40),
+
+                      Image.asset("assets/images/expenio.png"),
+
+                      const Gap(30),
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Text(
+                          'Going cashless has never been this easier with the world’s most leading expense manager.',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 17,
+                            color: const Color(0xFFAEAEB2),
+                          ),
                         ),
                       ),
-                    ),
-                    Spacer(),
-                    // TextButton(onPressed: () => {}, child: Text('Get Started')),
-                    CustomButton(
-                      title: "Get Started",
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/home');
-                      },
-                    ),
-                    const Gap(30),
-                  ],
+
+                      const Gap(130),
+
+                      CustomButton(
+                        title: "Get Started",
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/home');
+                        },
+                      ),
+
+                      const Gap(50),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

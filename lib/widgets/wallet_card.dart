@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WalletCard extends StatelessWidget {
@@ -29,36 +30,36 @@ class WalletCard extends StatelessWidget {
               children: [
                 Text(
                   "BALANCE",
-                  style: GoogleFonts.robotoMono(
+                  style: GoogleFonts.courierPrime(
                     color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
 
-                const SizedBox(height: 5),
-
+                //const SizedBox(height: 5),
                 Text(
                   "\$50,000.00",
-                  style: GoogleFonts.robotoMono(
+                  style: GoogleFonts.courierPrime(
+                    fontWeight: FontWeight.w500,
                     color: Colors.white,
-                    fontSize: 13,
+                    fontSize: 20,
                   ),
                 ),
 
-                const SizedBox(height: 45),
+                const SizedBox(height: 25),
 
                 Text(
                   "4225 9765 0008 6141",
-                  style: GoogleFonts.robotoMono(
+                  style: GoogleFonts.courierPrime(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 28,
                     color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
                     letterSpacing: 1,
                   ),
                 ),
 
-                const Spacer(),
+                const Gap(26),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,10 +67,10 @@ class WalletCard extends StatelessWidget {
                   children: [
                     Text(
                       "DWAYNE JOHNSON",
-                      style: GoogleFonts.robotoMono(
+                      style: GoogleFonts.courierPrime(
                         color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
 

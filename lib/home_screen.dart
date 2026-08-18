@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'widgets/home_header.dart';
 import 'widgets/transactions.dart';
 import 'widgets/wallet_header.dart';
 import 'widgets/transaction_data.dart';
@@ -68,7 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               const Gap(10),
 
               // Header
@@ -90,7 +88,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -113,17 +110,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
 
-
                     InkWell(
                       child: Container(
                         padding: EdgeInsets.all(10),
-                          child: SvgPicture.asset('assets/icons/arrow.svg')),
-                      onTap: (){
+                        child: SvgPicture.asset('assets/icons/arrow.svg'),
+                      ),
+                      onTap: () {
                         setState(() {
-                          hiddenAmount =! hiddenAmount;
+                          hiddenAmount = !hiddenAmount;
                         });
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -211,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget homeHeader(){
+  Widget homeHeader() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

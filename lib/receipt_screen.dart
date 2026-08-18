@@ -55,9 +55,9 @@ class ReceiptScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
 
-              /// Header
+              // HEADER
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -80,79 +80,84 @@ class ReceiptScreen extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 25),
+              const SizedBox(height: 10),
 
-              /// Receipt
+              // RECEIPT
               Expanded(
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Image.asset(
-                        "assets/images/receipt.png",
-                        fit: BoxFit.fill,
-                      ),
+                child: Center(
+                  child: AspectRatio(
+                    aspectRatio: 0.68,
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: Image.asset(
+                            "assets/images/receipt.png",
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 28,
+                            vertical: 35,
+                          ),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "22.02.2020",
+                                  style: GoogleFonts.inter(fontSize: 18),
+                                ),
+                              ),
+
+                              const SizedBox(height: 15),
+
+                              Text(
+                                "CASH RECEIPT",
+                                style: GoogleFonts.inter(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 3,
+                                ),
+                              ),
+
+                              const SizedBox(height: 10),
+
+                              dottedLine(),
+
+                              receiptRow("Amount", "\$40.00"),
+                              receiptRow("Service Fee", "\$2.82"),
+                              receiptRow("Internet Charge", "\$7.18"),
+
+                              dottedLine(),
+
+                              receiptRow("Total", "\$50.00", total: true),
+
+                              dottedLine(),
+
+                              const Spacer(),
+
+                              Image.asset(
+                                "assets/images/barcode.png",
+                                width: double.infinity,
+                                height: 55,
+                                fit: BoxFit.fitWidth,
+                              ),
+
+                              const SizedBox(height: 10),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 28,
-                        vertical: 35,
-                      ),
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "22.02.2020",
-                              style: GoogleFonts.inter(fontSize: 18),
-                            ),
-                          ),
-
-                          const SizedBox(height: 30),
-
-                          Text(
-                            "CASH RECEIPT",
-                            style: GoogleFonts.inter(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 3,
-                            ),
-                          ),
-
-                          const SizedBox(height: 25),
-
-                          dottedLine(),
-
-                          receiptRow("Amount", "\$40.00"),
-                          receiptRow("Service Fee", "\$2.82"),
-                          receiptRow("Internet Charge", "\$7.18"),
-
-                          dottedLine(),
-
-                          receiptRow("Total", "\$50.00", total: true),
-
-                          dottedLine(),
-
-                          const Spacer(),
-
-                          Image.asset(
-                            "assets/images/barcode.png",
-                            width: double.infinity,
-                            height: 80,
-                            fit: BoxFit.fitWidth,
-                          ),
-
-                          const SizedBox(height: 20),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
 
-              const SizedBox(height: 25),
+              const SizedBox(height: 15),
 
-              /// Home Button
+              // HOME BUTTON
               CustomButton(
                 title: "Home",
                 onPressed: () {
@@ -163,7 +168,7 @@ class ReceiptScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
             ],
           ),
         ),
