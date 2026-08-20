@@ -1,5 +1,6 @@
 import 'package:clothing_flutter/payment_screen.dart';
 import 'package:clothing_flutter/widgets/buttons.dart';
+import 'package:clothing_flutter/widgets/wallet_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
@@ -32,6 +33,34 @@ class ExpiryDateFormatter extends TextInputFormatter {
 
 class AddCardScreen extends StatelessWidget {
   const AddCardScreen({super.key});
+
+  // CARD NUMBER FORMATTER
+  TextEditingValue formatCardNumber(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    var numbers = newValue.text.replaceAll(RegExp(r'\D'), '');
+
+    // Maximum 16 digits
+    if (numbers.length > 16) {
+      numbers = numbers.substring(0, 16);
+    }
+
+    var formatted = '';
+
+    for (var i = 0; i < numbers.length; i++) {
+      if (i > 0 && i % 4 == 0) {
+        formatted += ' ';
+      }
+
+      formatted += numbers[i];
+    }
+
+    return TextEditingValue(
+      text: formatted,
+      selection: TextSelection.collapsed(offset: formatted.length),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,21 +108,20 @@ class AddCardScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
 
-              /// Card Image
-              ClipRRect(
-                borderRadius: BorderRadius.circular(24),
-                child: Image.asset(
-                  "assets/images/newcard.png",
-                  width: double.infinity,
-                  height: 220,
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.topCenter,
-                ),
+              // CARD IMAGE
+              const WalletCard(
+                image: "assets/images/wallet2.png",
+                cardNumber: "4225 9765 0008 6141",
+                cardHolder: "DWAYNE JOHNSON",
+                expiryDate: "09/24",
+                textColor: Color(0xFFAEAEB2),
+                showBalance: false,
+                logo: "assets/images/logo.png",
               ),
 
               const SizedBox(height: 20),
 
-              /// Card Holder Name
+              // CARD HOLDER
               const Text(
                 "Card holder's name",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
@@ -119,7 +147,7 @@ class AddCardScreen extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              /// Card Number
+              // CARD NUMBER
               const Text(
                 "Card number",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
@@ -129,6 +157,12 @@ class AddCardScreen extends StatelessWidget {
 
               TextField(
                 keyboardType: TextInputType.number,
+
+                // THIS IS THE IMPORTANT PART
+                inputFormatters: [
+                  TextInputFormatter.withFunction(formatCardNumber),
+                ],
+
                 decoration: InputDecoration(
                   hintText: "4225 9765 0008 6141",
                   filled: true,
@@ -172,7 +206,7 @@ class AddCardScreen extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              /// Expiry Date + CVV
+              // EXPIRY DATE + CVV
               Row(
                 children: [
                   Expanded(
@@ -254,7 +288,7 @@ class AddCardScreen extends StatelessWidget {
 
               const Gap(80),
 
-              /// Add Card Button
+              // ADD CARD BUTTON
               CustomButton(
                 title: "Add new card",
                 onPressed: () {

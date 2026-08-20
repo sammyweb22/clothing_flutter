@@ -1,9 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WalletCard extends StatelessWidget {
-  const WalletCard({super.key});
+  final String image;
+  final String cardNumber;
+  final String cardHolder;
+  final String expiryDate;
+  final Color textColor;
+  final bool showBalance;
+  final String balance;
+  final String? logo;
+
+  const WalletCard({
+    super.key,
+    required this.image,
+    required this.cardNumber,
+    required this.cardHolder,
+    required this.expiryDate,
+    required this.textColor,
+    required this.showBalance,
+    this.balance = "\$50,000.00",
+    this.logo,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,91 +29,118 @@ class WalletCard extends StatelessWidget {
       aspectRatio: 343 / 194,
       child: Stack(
         children: [
-          // Background PNG
+          // =========================
+          // CARD BACKGROUND
+          // =========================
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
             child: Image.asset(
-              "assets/images/wallet1.png",
+              image,
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.cover,
             ),
           ),
 
-          // Text on top of the image
-          Padding(
-            padding: const EdgeInsets.all(24),
+          // ==============
+          // LOGOS//
+          // =============
+          if (logo != null)
+            Positioned(
+              right: 24,
+              top: 18,
+              child: Image.asset(logo!, width: 54, height: 28),
+            ),
+
+          // =========================
+          // BALANCE
+          // =========================
+          if (showBalance)
+            Positioned(
+              left: 24,
+              top: 18,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "BALANCE",
+                    style: GoogleFonts.courierPrime(
+                      color: textColor,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    balance,
+                    style: GoogleFonts.courierPrime(
+                      color: textColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+          // =========================
+          // CARD NUMBER
+          // =========================
+          Positioned(
+            left: 24,
+            top: 86,
+            child: Text(
+              cardNumber,
+              style: GoogleFonts.courierPrime(
+                fontWeight: FontWeight.w800,
+                fontSize: 24,
+                color: textColor,
+                letterSpacing: 1,
+              ),
+            ),
+          ),
+
+          // =========================
+          // CARD HOLDER
+          // =========================
+          Positioned(
+            left: 24,
+            bottom: 20,
+            child: Text(
+              cardHolder,
+              style: GoogleFonts.courierPrime(
+                color: textColor,
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+
+          // =========================
+          // EXPIRY
+          // =========================
+          Positioned(
+            right: 24,
+            bottom: 20,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "BALANCE",
+                  "EXPIRY",
                   style: GoogleFonts.courierPrime(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+                    color: textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-
-                //const SizedBox(height: 5),
+                const SizedBox(height: 2),
                 Text(
-                  "\$50,000.00",
+                  expiryDate,
                   style: GoogleFonts.courierPrime(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 20,
+                    color: textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
-                ),
-
-                const SizedBox(height: 25),
-
-                Text(
-                  "4225 9765 0008 6141",
-                  style: GoogleFonts.courierPrime(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 28,
-                    color: Colors.white,
-                    letterSpacing: 1,
-                  ),
-                ),
-
-                const Gap(26),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "DWAYNE JOHNSON",
-                      style: GoogleFonts.courierPrime(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "EXPIRY",
-                          style: GoogleFonts.robotoMono(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "09/24",
-                          style: GoogleFonts.robotoMono(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
                 ),
               ],
             ),

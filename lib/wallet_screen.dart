@@ -29,20 +29,23 @@ class WalletScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: const Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.arrow_back_ios, color: Colors.blue),
                       SizedBox(width: 4),
                       Text(
                         "Back",
-                        style: TextStyle(color: Colors.blue, fontSize: 20),
+                        style: GoogleFonts.inter(
+                          color: Colors.blue,
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
 
                 // Wallet Header
                 WalletHeader(
@@ -71,7 +74,16 @@ class WalletScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // VISA Card
-                const WalletCard(),
+                const WalletCard(
+                  image: "assets/images/wallet1.png",
+                  balance: "\$50,000.00",
+                  cardNumber: "4225 9765 0008 6141",
+                  cardHolder: "DWAYNE JOHNSON",
+                  expiryDate: "09/24",
+                  textColor: Colors.white,
+                  showBalance: true,
+                  logo: "assets/images/logo2.png",
+                ),
 
                 const SizedBox(height: 12),
 
@@ -92,7 +104,7 @@ class WalletScreen extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(24),
+                        padding: const EdgeInsets.all(25),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

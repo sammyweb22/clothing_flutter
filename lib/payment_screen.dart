@@ -100,7 +100,15 @@ class PaymentScreen extends StatelessWidget {
                 const SizedBox(height: 25),
 
                 // Card image
-                const WalletCard(),
+                const WalletCard(
+                  image: "assets/images/wallet1.png",
+                  balance: "\$50,000.00",
+                  cardNumber: "4225 9765 0008 6141",
+                  cardHolder: "DWAYNE JOHNSON",
+                  expiryDate: "09/24",
+                  textColor: Colors.white,
+                  showBalance: true,
+                ),
 
                 // Page indicator
                 const SizedBox(height: 8),

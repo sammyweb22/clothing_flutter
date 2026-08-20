@@ -183,8 +183,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 270,
                   height: 8,
                   decoration: BoxDecoration(
-                    color: const Color(0xffEBD3F6),
-                    borderRadius: BorderRadius.circular(50),
+                    color: const Color(0xFFAF52DE).withOpacity(0.26),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(5),
+                      topRight: Radius.circular(5),
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
                   ),
                 ),
               ),
